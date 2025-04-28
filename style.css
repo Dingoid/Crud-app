@@ -1,0 +1,128 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Noto sans", sans-serif;
+	transition-duration: 300ms;
+}
+h1 {
+	font-family: "Bungee", sans-serif;
+	font-weight: bolder;
+}
+body {
+	background: #121212;
+	min-height: 100vh;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	padding: 24px;
+}
+header,
+main,
+footer {
+	width: 800px;
+	max-width: 100%;
+	margin: 0 auto;
+}
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	flex: 1;
+}
+.plusIcon {
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+.plusIcon:hover {
+	color: slategray;
+}
+#enterTodo {
+	display: none;
+}
+#enterTodo form {
+	display: flex;
+	align-items: stretch;
+	border: 1px solid white;
+	position: relative;
+}
+#enterTodo input {
+	background: transparent;
+	outline: none;
+	padding: 12px;
+	color: white;
+	flex: 1;
+	border: none;
+}
+#enterTodo button {
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	background: white;
+	border: none;
+	outline: none;
+	padding: 0 12px;
+	color: #121212;
+	font-family: "Bungee", sans-serif;
+	cursor: pointer;
+}
+#enterTodo button:hover {
+	background: #121212;
+	color: white;
+}
+#todos {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	flex: 1;
+}
+.arrows {
+	display: flex;
+	flex-direction: column;
+	margin-right: 14px;
+}
+.arrows i:hover {
+	color: slategray;
+}
+.todoItem {
+	display: flex;
+	align-items: center;
+}
+.todoItem p {
+	flex: 1;
+}
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	cursor: pointer;
+}
+
+.actions i:hover {
+	color: slategray;
+}
+
+footer {
+	display: grid;
+	place-items: center;
+	height: 14px;
+}
+
+footer a {
+	color: inherit;
+}
+
+footer i {
+	cursor: pointer;
+}
+
+footer i:hover {
+	color: slategray;
+}
