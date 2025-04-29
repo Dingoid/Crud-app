@@ -5,7 +5,6 @@ const todoInput = document.getElementById("textInput");
 const inputButton = document.getElementById("add");
 const showEnterTodo = document.getElementById("showEnterTodo");
 const enterTodo = document.getElementById("enterTodo");
-let arrowDirec = "";
 
 function showTodoInput() {
 	if (enterTodo.style.display == "block") {
@@ -59,7 +58,7 @@ function renderTodos() {
 									i + 1
 								}, this.id)" id="arrowDown" class="fa-solid fa-caret-down"></i>
             </div>
-            <p>${i + 1}. ${todo}</p>
+            <p id="todo${i + 1}">${i + 1}. ${todo}</p>
             <div class="actions">
                 <i onclick="editTodo(${i})" class="fa-solid fa-pen"></i>
                 <i onclick="removeTodo(${i})" class="fa-solid fa-trash-can"></i>
@@ -72,16 +71,29 @@ function renderTodos() {
 }
 
 function moveTodos(index, id) {
-	console.log(index);
-	if (id == "arrowUp") {
-		console.log("up");
+	if (id == "arrowUp" && document.querySelector(`#todo${index - 1}`) != null) {
+		let replaceText = document.querySelector(`#todo${index - 1}`).textContent;
+		let currText = document.querySelector(`#todo${index}`).textContent;
+		let placeholderText = replaceText;
+		replaceText = currText.replace(`${index}`, `${index - 1}`);
+		currText = placeholderText.replace(`${index - 1}`, `${index}`);
+		placeholderText = "";
+		document.querySelector(`#todo${index}`).textContent = currText;
+		document.querySelector(`#todo${index - 1}`).textContent = replaceText;
 	}
-	if (id == "arrowDown") {
-		console.log("down");
+	if (
+		id == "arrowDown" &&
+		document.querySelector(`#todo${index + 1}`) != null
+	) {
+		let replaceText = document.querySelector(`#todo${index + 1}`).textContent;
+		let currText = document.querySelector(`#todo${index}`).textContent;
+		let placeholderText = replaceText;
+		replaceText = currText.replace(`${index}`, `${index + 1}`);
+		currText = placeholderText.replace(`${index + 1}`, `${index}`);
+		placeholderText = "";
+		document.querySelector(`#todo${index}`).textContent = currText;
+		document.querySelector(`#todo${index + 1}`).textContent = replaceText;
 	}
-	//on click, if arrowUp, take index of selected text and the index of the above(previous) text, set both text to variables, swap them
-	//if index is 0, dont move
-	//if index a text that doesnt exsist, dont move
 }
 
 renderTodos();
